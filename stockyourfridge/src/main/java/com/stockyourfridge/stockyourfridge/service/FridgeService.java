@@ -82,27 +82,6 @@ public class FridgeService {
 		return mappedFridgesByOwner;
 	}
 
-	public void subscribeToFridge(String userName, long fridgeId) throws Exception {
-		Fridge fridge = fridgeRepository.findById(fridgeId)
-				.orElseThrow(() -> new FridgeNotFoundException(fridgeId));
-		
-		log.debug("Found fridge");
-		
-		User user = userRepository.findByUserName(userName)
-				.orElseThrow(() -> new UserNotFoundException(userName));
-		
-		log.debug("Found user");
-		
-		List<User> users = fridge.getUsers();
-		
-		log.debug("Found users from fridge");
-		users.add(user);
-		log.debug("Added user in users");
-		fridge.setUsers(users);
-		log.debug("Saving in repo");
-		fridgeRepository.save(fridge);
-	}
-
 	public void deleteFridge(long fridgeId) {
 		log.debug("Deleting fridge with id : " + fridgeId);
 		
