@@ -23,6 +23,8 @@ public class UserService {
 		
 		User toSaveUser = User.builder()
 								.userName(userDto.getUserName())
+								.password(userDto.getPassword())
+								.email(userDto.getEmail())
 								.build();
 		
 		User user = userRepository.save(toSaveUser);
@@ -30,6 +32,8 @@ public class UserService {
 		return UserDto.builder()
 						.userId(user.getUserId())
 						.userName(user.getUserName())
+						.password(user.getPassword())
+						.email(user.getEmail())
 						.build();
 	}
 
