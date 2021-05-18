@@ -46,14 +46,6 @@ public class FridgeController {
 		return fridgeService.updateFridge(fridgeDto);
 	}
 	
-	@PutMapping("/subscribe/userName/{userName}/fridgeId/{fridgeId}")
-	public ResponseEntity<String> subscribeToFridge(@PathVariable String userName, @PathVariable long fridgeId) throws Exception {
-		
-		fridgeService.subscribeToFridge(userName, fridgeId);
-		
-		return ResponseEntity.ok("User : " + userName + " successfully subscribed to fridge : " + fridgeId);
-	}
-	
 	//TODO unsubscribe fridge
 	//TODO get subscribed fridges
 	//TODO get subscribers for fridge
