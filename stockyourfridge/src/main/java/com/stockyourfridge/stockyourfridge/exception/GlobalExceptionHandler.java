@@ -40,6 +40,16 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
 	}
 	
+	// handling subscriber not found exception
+	@ExceptionHandler(SubscriberNotFoundException.class)
+	public ResponseEntity<?> userNotFoundExceptionHandling(SubscriberNotFoundException exception, WebRequest request) {
+		log.error("SubscriberNotFoundException: " + exception.getMessage());
+		Date date = new Date();
+		ErrorDetails errorDetails = new ErrorDetails(date, exception.getMessage(),
+				request.getDescription(false));
+		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+	}
+	
 	// handling global exception
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<?> globalExceptionHandling(Exception exception, WebRequest request) {
