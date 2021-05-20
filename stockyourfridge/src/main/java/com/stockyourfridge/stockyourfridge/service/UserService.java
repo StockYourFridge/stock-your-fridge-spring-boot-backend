@@ -47,7 +47,7 @@ public class UserService {
 		return userDtos;
 	}
 	
-	public List<UserDto> mapUsersToUserDtos(List<User> users) {
+	public static List<UserDto> mapUsersToUserDtos(List<User> users) {
 		List<UserDto> userDtos = new ArrayList<>();
 		
 		for (User user : users) {

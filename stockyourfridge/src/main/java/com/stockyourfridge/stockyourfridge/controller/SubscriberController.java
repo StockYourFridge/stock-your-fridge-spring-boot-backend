@@ -1,12 +1,17 @@
 package com.stockyourfridge.stockyourfridge.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.stockyourfridge.stockyourfridge.dto.UserDto;
+import com.stockyourfridge.stockyourfridge.model.User;
 import com.stockyourfridge.stockyourfridge.service.SubscriberService;
 
 import lombok.AllArgsConstructor;
@@ -32,6 +37,11 @@ public class SubscriberController {
 		subscriberService.unsubscribeFromFridge(userName, fridgeId);
 		
 		return ResponseEntity.ok("User : " + userName + " successfully unsubscribed from fridge : " + fridgeId);
+	}
+	
+	@GetMapping("/{fridgeId}")
+	public List<UserDto> getSubscribersOfFridge(@PathVariable long fridgeId) {
+		return subscriberService.getSubscribersOfFridge(fridgeId);
 	}
 	
 }

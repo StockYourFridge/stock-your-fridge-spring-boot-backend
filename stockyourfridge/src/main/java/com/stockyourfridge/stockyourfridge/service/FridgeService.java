@@ -51,7 +51,7 @@ public class FridgeService {
 		return savedFridgeDto;
 	}
 	
-	private List<FridgeDto> mapFridgesToFridgeDtos(List<Fridge> fridges) {
+	public static List<FridgeDto> mapFridgesToFridgeDtos(List<Fridge> fridges) {
 		List<FridgeDto> fridgeDtos = new ArrayList<>();
 		
 		for (Fridge fridge : fridges) {
